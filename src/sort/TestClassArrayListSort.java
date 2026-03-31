@@ -3,6 +3,22 @@ package sort;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 
 class Member{
 	private int mno;
@@ -12,6 +28,10 @@ class Member{
 		this.mno = mno;
 	}
 
+	public int getMno() {
+		return mno;
+	}
+	
 	@Override
 	public String toString() {
 		return "Member [mno=" + mno + "]";
@@ -42,8 +62,28 @@ public class TestClassArrayListSort {
 		dispList(mList);
 		// 오름차순 정렬
 		
-		Collections.sort(mList);
-		dispList(mList);
+		Comparator<Member>  compAsc = new Comparator<Member>() {
+			
+			@Override
+			public int compare(Member o1, Member o2) {				
+				return o1.getMno() - o2.getMno();
+			}
+		};
+		Comparator<Member>  compDesc = new Comparator<Member>() {
+			
+			@Override
+			public int compare(Member o1, Member o2) {				
+				return o2.getMno() - o1.getMno();
+			}
+		};
+		
+		Collections.sort( mList, compAsc );		
+		dispList( mList );
+		
+		Collections.sort( mList, (a, b) -> {return b.getMno() - a.getMno();} );
+		
+		dispList( mList );
+		
 	}
 
 	private static void dispList(List<Member> mList) {
